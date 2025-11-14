@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Scene Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Main container -->
+    <div id="app">
+        <!-- Initial Split Screen -->
+        <div id="initial-screen" class="screen active">
+            <!-- Left: Forest Preview -->
+            <div class="split-section forest-preview" data-scene="forest">
+                <div class="forest-trees">
+                    <div class="tree" style="left: 5%"></div>
+                    <div class="tree" style="left: 18%"></div>
+                    <div class="tree" style="left: 31%"></div>
+                    <div class="tree" style="left: 44%"></div>
+                    <div class="tree" style="left: 57%"></div>
+                    <div class="tree" style="left: 70%"></div>
+                    <div class="tree" style="left: 83%"></div>
+                </div>
+            </div>
+
+            <!-- Right: Meadow Preview -->
+            <div class="split-section meadow-preview" data-scene="meadow">
+                <div class="sky-area">
+                    <div class="cloud" style="left: 15%; top: 20%;"></div>
+                    <div class="cloud" style="left: 45%; top: 35%;"></div>
+                    <div class="cloud" style="left: 70%; top: 25%;"></div>
+                </div>
+                <div class="grass-area">
+                    <div class="grass-patch" style="left: 10%; bottom: 15%;"></div>
+                    <div class="grass-patch" style="left: 30%; bottom: 25%;"></div>
+                    <div class="grass-patch" style="left: 50%; bottom: 10%;"></div>
+                    <div class="grass-patch" style="left: 70%; bottom: 20%;"></div>
+                    <div class="grass-patch" style="left: 85%; bottom: 15%;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forest Scene -->
+        <div id="forest-scene" class="screen">
+            <div class="forest-sky"></div>
+            <div class="forest-background">
+                <div class="tree-layer layer-back"></div>
+                <div class="tree-layer layer-mid"></div>
+                <div class="tree-layer layer-front"></div>
+            </div>
+            <div class="interaction-zone tree-zone" data-interaction="leaves"></div>
+            <div class="interaction-zone sky-zone" data-interaction="birds"></div>
+        </div>
+
+        <!-- Meadow Scene -->
+        <div id="meadow-scene" class="screen">
+            <div class="meadow-sky">
+                <div class="cloud" style="left: 20%; top: 15%;"></div>
+                <div class="cloud" style="left: 50%; top: 25%;"></div>
+                <div class="cloud" style="left: 75%; top: 18%;"></div>
+            </div>
+            <div class="meadow-ground">
+                <div class="grass-base"></div>
+            </div>
+            <div class="interaction-zone grass-zone" data-interaction="flowers"></div>
+            <div class="interaction-zone meadow-sky-zone" data-interaction="clouds"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

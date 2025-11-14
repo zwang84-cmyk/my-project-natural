@@ -1,0 +1,462 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow: hidden;
+    background: #e8f4f8;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Screen Management */
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100%;
+    transition: left 350ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.screen.active {
+    left: 0;
+}
+
+.screen.slide-left {
+    left: -100%;
+}
+
+/* Initial Split Screen */
+#initial-screen {
+    display: flex;
+}
+
+.split-section {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: transform 200ms ease;
+}
+
+.split-section:hover {
+    transform: scale(1.02);
+}
+
+/* Forest Preview (Left) */
+.forest-preview {
+    background: linear-gradient(180deg, #b8d9e8 0%, #d4e8d4 60%, #7a9b7e 100%);
+}
+
+.forest-trees {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.tree {
+    position: absolute;
+    bottom: 0;
+    width: 12%;
+    height: 80%;
+}
+
+.tree::before {
+    /* Canopy */
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 65%;
+    background: #5a7d5f;
+    border-radius: 50% 50% 45% 45%;
+}
+
+.tree::after {
+    /* Trunk */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15%;
+    height: 35%;
+    background: #6b5544;
+}
+
+/* Meadow Preview (Right) */
+.meadow-preview {
+    background: linear-gradient(180deg, #b8d9e8 0%, #c9e4c5 50%, #a8c99a 100%);
+}
+
+.sky-area {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 0;
+}
+
+.grass-area {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+}
+
+.cloud {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50px;
+}
+
+.cloud::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    top: -10px;
+    left: 10px;
+}
+
+.cloud::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    top: -8px;
+    right: 8px;
+}
+
+.grass-patch {
+    position: absolute;
+    width: 30px;
+    height: 25px;
+}
+
+.grass-patch::before,
+.grass-patch::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: #6b8e5e;
+    bottom: 0;
+}
+
+.grass-patch::before {
+    left: 5px;
+    transform: rotate(-5deg);
+}
+
+.grass-patch::after {
+    right: 5px;
+    transform: rotate(8deg);
+}
+
+/* Forest Scene */
+#forest-scene {
+    background: linear-gradient(180deg, #a8c9d8 0%, #8bb0b8 20%, #6b8e7e 100%);
+}
+
+.forest-sky {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(180deg, #a8c9d8 0%, #b8d4c8 100%);
+}
+
+.forest-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.tree-layer {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    bottom: 0;
+}
+
+.layer-back {
+    background:
+        radial-gradient(ellipse 80px 200px at 15% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 90px 220px at 35% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 75px 190px at 55% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 85px 210px at 75% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 80px 200px at 90% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%);
+}
+
+.layer-mid {
+    background:
+        radial-gradient(ellipse 100px 240px at 10% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 110px 260px at 30% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 95px 230px at 50% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 105px 250px at 70% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 100px 240px at 85% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%);
+}
+
+.layer-front {
+    background:
+        radial-gradient(ellipse 120px 280px at 8% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 130px 300px at 25% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 115px 270px at 45% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 125px 290px at 65% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 120px 280px at 82% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 110px 260px at 95% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%);
+}
+
+/* Interaction Zones - Forest */
+.tree-zone {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.sky-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Meadow Scene */
+#meadow-scene {
+    background: linear-gradient(180deg, #b8d9e8 0%, #c9e4c5 45%, #a8c99a 100%);
+}
+
+.meadow-sky {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 45%;
+}
+
+.meadow-ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 55%;
+    background: linear-gradient(180deg, #b5d4a8 0%, #a8c99a 100%);
+}
+
+.grass-base {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(107, 142, 94, 0.2) 3px, rgba(107, 142, 94, 0.2) 4px),
+        repeating-linear-gradient(92deg, transparent, transparent 5px, rgba(107, 142, 94, 0.15) 5px, rgba(107, 142, 94, 0.15) 6px);
+}
+
+/* Interaction Zones - Meadow */
+.grass-zone {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.meadow-sky-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Animated Elements */
+
+/* Leaf */
+.leaf {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: #c9d97a;
+    border-radius: 50% 0;
+    z-index: 5;
+    pointer-events: none;
+    transform-origin: 0 0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(var(--fall-distance)) translateX(var(--fall-sway)) rotate(var(--fall-rotation));
+        opacity: 0;
+    }
+}
+
+/* Bird */
+.bird {
+    position: absolute;
+    width: 26px;
+    height: 16px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.bird::before,
+.bird::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: #8a8a7a;
+    top: 50%;
+}
+
+.bird::before {
+    left: 0;
+    transform: rotate(-25deg);
+    transform-origin: right center;
+}
+
+.bird::after {
+    right: 0;
+    transform: rotate(25deg);
+    transform-origin: left center;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--fly-x), var(--fly-y));
+        opacity: 0;
+    }
+}
+
+@keyframes flap {
+    0%, 100% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(0.85);
+    }
+}
+
+/* Flower */
+.flower {
+    position: absolute;
+    z-index: 8;
+    pointer-events: none;
+    transform-origin: bottom center;
+}
+
+.flower-stem {
+    position: absolute;
+    width: 3px;
+    background: #5a7d4f;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: bottom;
+}
+
+.flower-head {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    transform-origin: center;
+}
+
+.flower-head::before,
+.flower-head::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+}
+
+.flower-head::before {
+    transform: rotate(45deg);
+}
+
+.flower-head::after {
+    transform: rotate(90deg);
+}
+
+@keyframes grow-stem {
+    0% {
+        transform: translateX(-50%) scaleY(0);
+    }
+    100% {
+        transform: translateX(-50%) scaleY(1);
+    }
+}
+
+@keyframes bloom {
+    0% {
+        transform: translateX(-50%) scale(0);
+    }
+    60% {
+        transform: translateX(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* Drifting Cloud */
+.drifting-cloud {
+    position: absolute;
+    z-index: 6;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes drift {
+    0% {
+        transform: translateX(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(var(--drift-distance));
+        opacity: 0.7;
+    }
+}
