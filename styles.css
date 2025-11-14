@@ -172,58 +172,60 @@ body {
 
 /* Forest Scene */
 #forest-scene {
-    background: linear-gradient(180deg, #a8c9d8 0%, #8bb0b8 20%, #6b8e7e 100%);
+    background: linear-gradient(180deg, #a8c9d8 0%, #b8d4c8 25%, #8bb0a8 50%, #7a9b7e 100%);
 }
 
 .forest-sky {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 20%;
+    height: 25%;
     background: linear-gradient(180deg, #a8c9d8 0%, #b8d4c8 100%);
+    z-index: 1;
 }
 
 .forest-background {
     position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
+    height: 75%;
+    bottom: 0;
     left: 0;
+    background: linear-gradient(180deg, #8bb0a8 0%, #7a9b7e 100%);
 }
 
 .tree-layer {
     position: absolute;
     width: 100%;
-    height: 80%;
+    height: 100%;
     bottom: 0;
 }
 
 .layer-back {
     background:
-        radial-gradient(ellipse 80px 200px at 15% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 90px 220px at 35% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 75px 190px at 55% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 85px 210px at 75% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 80px 200px at 90% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%);
+        radial-gradient(ellipse 80px 180px at 15% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 90px 200px at 35% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 75px 170px at 55% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 85px 190px at 75% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 80px 180px at 90% 100%, rgba(90, 115, 95, 0.6) 0%, transparent 70%);
 }
 
 .layer-mid {
     background:
-        radial-gradient(ellipse 100px 240px at 10% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
-        radial-gradient(ellipse 110px 260px at 30% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
-        radial-gradient(ellipse 95px 230px at 50% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
-        radial-gradient(ellipse 105px 250px at 70% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
-        radial-gradient(ellipse 100px 240px at 85% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%);
+        radial-gradient(ellipse 100px 220px at 10% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 110px 240px at 30% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 95px 210px at 50% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 105px 230px at 70% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 100px 220px at 85% 100%, rgba(70, 100, 75, 0.7) 0%, transparent 70%);
 }
 
 .layer-front {
     background:
-        radial-gradient(ellipse 120px 280px at 8% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
-        radial-gradient(ellipse 130px 300px at 25% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
-        radial-gradient(ellipse 115px 270px at 45% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
-        radial-gradient(ellipse 125px 290px at 65% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
-        radial-gradient(ellipse 120px 280px at 82% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
-        radial-gradient(ellipse 110px 260px at 95% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%);
+        radial-gradient(ellipse 120px 260px at 8% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 130px 280px at 25% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 115px 250px at 45% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 125px 270px at 65% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 120px 260px at 82% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 110px 240px at 95% 100%, rgba(60, 90, 70, 0.85) 0%, transparent 70%);
 }
 
 /* Interaction Zones - Forest */
@@ -232,7 +234,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 80%;
+    height: 75%;
     z-index: 10;
     cursor: pointer;
 }
@@ -242,7 +244,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 20%;
+    height: 25%;
     z-index: 10;
     cursor: pointer;
 }
@@ -393,32 +395,35 @@ body {
 
 .flower-head {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    width: 24px;
+    height: 24px;
     top: 0;
     left: 50%;
     transform: translateX(-50%) scale(0);
     transform-origin: center;
 }
 
-.flower-head::before,
-.flower-head::after {
-    content: '';
+/* Create flower petals using multiple elements */
+.flower-petal {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
 }
 
-.flower-head::before {
-    transform: rotate(45deg);
-}
-
-.flower-head::after {
-    transform: rotate(90deg);
+/* Center of flower */
+.flower-center {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #f4d03f;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 @keyframes grow-stem {

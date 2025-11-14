@@ -9,7 +9,7 @@ A mid-fidelity interactive prototype featuring a calm natural atmosphere with fo
 - Click either section to transition to that scene
 
 ### Forest Scene Interactions
-- **Tap Tree Area**: Creates 6-10 falling leaves that drift down with curved paths
+- **Tap Forest Ground**: Grows a flower at the tap location with visible petals and stem
 - **Tap Sky Area**: Spawns 2-3 birds that fly diagonally upward with flapping animation
 
 ### Meadow Scene Interactions
@@ -21,7 +21,7 @@ A mid-fidelity interactive prototype featuring a calm natural atmosphere with fo
 1. Open `index.html` in a web browser
 2. Click the left half (forest preview) or right half (meadow preview) to enter that scene
 3. Once in a scene, tap different areas to trigger interactions:
-   - In forest: tap trees for leaves, tap sky for birds
+   - In forest: tap ground for flowers, tap sky for birds
    - In meadow: tap grass for flowers, tap sky for clouds
 
 ## Files

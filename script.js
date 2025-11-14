@@ -18,7 +18,7 @@ class NatureScene {
         const skyZone = document.querySelector('.sky-zone');
 
         if (treeZone) {
-            treeZone.addEventListener('click', (e) => this.createFallingLeaves(e));
+            treeZone.addEventListener('click', (e) => this.createFlowerInForest(e));
         }
 
         if (skyZone) {
@@ -177,33 +177,38 @@ class NatureScene {
         // Create flower head
         const head = document.createElement('div');
         head.className = 'flower-head';
-        const headSize = 18 + Math.random() * 4; // 18-22px
+        const headSize = 24 + Math.random() * 6; // 24-30px
         head.style.width = `${headSize}px`;
         head.style.height = `${headSize}px`;
 
-        // Random color
-        const colors = [
-            'rgba(255, 182, 193, 0.9)', // soft pink
-            'rgba(255, 253, 150, 0.9)', // light yellow
-            'rgba(221, 160, 221, 0.9)'  // pastel purple
+        // Random petal colors
+        const petalColors = [
+            '#ffb6c1', // soft pink
+            '#ffd4e5', // lighter pink
+            '#fff59d', // light yellow
+            '#dda0dd', // pastel purple
+            '#e6b3ff'  // lighter purple
         ];
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        head.style.background = color;
-        head.style.setProperty('--flower-color', color);
+        const color = petalColors[Math.floor(Math.random() * petalColors.length)];
 
-        // Also set the pseudo-elements color
-        if (head.style.setProperty) {
-            const style = document.createElement('style');
-            const uniqueId = `flower-${Date.now()}-${Math.random()}`;
-            head.setAttribute('data-flower-id', uniqueId);
-            style.textContent = `
-                .flower-head[data-flower-id="${uniqueId}"]::before,
-                .flower-head[data-flower-id="${uniqueId}"]::after {
-                    background: ${color};
-                }
-            `;
-            document.head.appendChild(style);
+        // Create 5 petals arranged in a circle
+        for (let i = 0; i < 5; i++) {
+            const petal = document.createElement('div');
+            petal.className = 'flower-petal';
+            const angle = (i * 72) * (Math.PI / 180); // 72 degrees between petals
+            const radius = 8; // Distance from center
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+
+            petal.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+            petal.style.background = color;
+            head.appendChild(petal);
         }
+
+        // Create center
+        const center = document.createElement('div');
+        center.className = 'flower-center';
+        head.appendChild(center);
 
         flower.appendChild(stem);
         flower.appendChild(head);
@@ -216,6 +221,11 @@ class NatureScene {
                 head.style.animation = 'bloom 500ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
             }, 400);
         }, 10);
+    }
+
+    createFlowerInForest(event) {
+        // Reuse the same flower creation logic for forest ground
+        this.createFlower(event);
     }
 
     createDriftingCloud(event) {
